@@ -1,5 +1,5 @@
-const fs = require('fs')
-const fspath = require('path')
+const fs = require('fs');
+const fspath = require('path');
 const {format} = require('url');
 const {find, merge} = require('lodash');
 const getStream = require('get-stream');
@@ -88,36 +88,32 @@ async function generateNotes(pluginConfig, context) {
   debug('linkReferences: %o', changelogContext.linkReferences);
   debug('issue: %o', changelogContext.issue);
   debug('commit: %o', changelogContext.commit);
-  
-  var res = await getStream(intoStream.object(parsedCommits).pipe(writer(changelogContext, writerOpts)));
-  
-  if('header' in pluginConfig) {
-    var headerOpt = pluginConfig['header'];
 
-    if(headerOpt === fspath.basename(headerOpt)) {
-      res =  headerOpt + '\n' + res;
-    } else {
-      if(fs.existsSync(pluginConfig['header'])) {
-        const header = fs.readFileSync(headerOpt, { encoding: 'utf8' });
-        res = header + '\n' + res;
-      }
+  let result = await getStream(intoStream.object(parsedCommits).pipe(writer(changelogContext, writerOpts)));
+
+  if ('header' in pluginConfig) {
+    const headerOpt = pluginConfig.header;
+
+    if (headerOpt === fspath.basename(headerOpt)) {
+      result = headerOpt + '\n' + result;
+    } else if (fs.existsSync(pluginConfig.header)) {
+      const header = fs.readFileSync(headerOpt, {encoding: 'utf8'});
+      result = header + '\n' + result;
     }
   }
 
-  if('footer' in pluginConfig) {
-    var footerOpt = pluginConfig['footer'];
+  if ('footer' in pluginConfig) {
+    const footerOpt = pluginConfig.footer;
 
-    if(footerOpt === fspath.basename(footerOpt)) {
-      res = res + '\n' + footerOpt
-    } else {
-      if(fs.existsSync(pluginConfig['footer'])) {
-        const footer = fs.readFileSync(footerOpt, { encoding: 'utf8' });
-        res = res + '\n' + footer
-      }
+    if (footerOpt === fspath.basename(footerOpt)) {
+      result = result + '\n' + footerOpt;
+    } else if (fs.existsSync(pluginConfig.footer)) {
+      const footer = fs.readFileSync(footerOpt, {encoding: 'utf8'});
+      result = result + '\n' + footer;
     }
   }
-  
-  return res;
+
+  return result;
 }
 
 module.exports = {generateNotes};

@@ -395,7 +395,13 @@ test('Accept a custom repository URL with git+ssh format and custom port', async
   ];
   const changelog = await generateNotes(
     {},
-    {cwd, options: {repositoryUrl: 'git+ssh://git@domain.com:2222/owner/repo.git'}, lastRelease, nextRelease, commits}
+    {
+      cwd,
+      options: {repositoryUrl: 'git+ssh://git@domain.com:2222/owner/repo.git'},
+      lastRelease,
+      nextRelease,
+      commits,
+    }
   );
 
   t.regex(changelog, new RegExp(escape('(https://domain.com/owner/repo/compare/v1.0.0...v2.0.0)')));
@@ -640,42 +646,54 @@ test('ReThrow error from "conventional-changelog"', async (t) => {
   );
 });
 
-test('Accept "header" file path option', async(t) => {
+test('Accept "header" file path option', async (t) => {
   const commits = [
     {hash: '111', message: 'fix(scope1): First fix'},
     {hash: '222', message: 'feat(scope2): First feature'},
   ];
 
-  const releaseNotes = await generateNotes({header: './test/testHeader.md'}, {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits});
+  const releaseNotes = await generateNotes(
+    {header: './test/testHeader.md'},
+    {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits}
+  );
   t.regex(releaseNotes, /### Test Header/);
 });
 
-test('Accept "header" string option', async(t) => {
+test('Accept "header" string option', async (t) => {
   const commits = [
     {hash: '111', message: 'fix(scope1): First fix'},
     {hash: '222', message: 'feat(scope2): First feature'},
   ];
 
-  const releaseNotes = await generateNotes({header: "### Test Header"}, {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits});
+  const releaseNotes = await generateNotes(
+    {header: '### Test Header'},
+    {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits}
+  );
   t.regex(releaseNotes, /### Test Header/);
 });
 
-test('Accept "footer" file path option', async(t) => {
+test('Accept "footer" file path option', async (t) => {
   const commits = [
     {hash: '111', message: 'fix(scope1): First fix'},
     {hash: '222', message: 'feat(scope2): First feature'},
   ];
 
-  const releaseNotes = await generateNotes({footer: './test/testHeader.md'}, {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits})
+  const releaseNotes = await generateNotes(
+    {footer: './test/testHeader.md'},
+    {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits}
+  );
   t.regex(releaseNotes, /### Test Header/);
 });
 
-test('Accept "footer" string option', async(t) => {
+test('Accept "footer" string option', async (t) => {
   const commits = [
     {hash: '111', message: 'fix(scope1): First fix'},
     {hash: '222', message: 'feat(scope2): First feature'},
   ];
 
-  const releaseNotes = await generateNotes({footer: "### Test Footer"}, {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits});
+  const releaseNotes = await generateNotes(
+    {footer: '### Test Footer'},
+    {cwd, options: {repositoryUrl}, lastRelease, nextRelease, commits}
+  );
   t.regex(releaseNotes, /### Test Footer/);
 });
