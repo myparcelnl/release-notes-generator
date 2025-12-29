@@ -1,10 +1,10 @@
 {
-  "name": "@myparcel/semantic-release-release-notes-generator",
+  "name": "@myparcel-dev/semantic-release-release-notes-generator",
   "description": "semantic-release plugin to generate changelog content with conventional-changelog",
   "version": "0.0.0-development",
   "author": "Pierre Vanduynslager (https://twitter.com/@pvdlg_)",
   "bugs": {
-    "url": "https://github.com/semantic-release/release-notes-generator/issues"
+    "url": "https://github.com/myparcelnl/release-notes-generator/issues"
   },
   "contributors": [
     "Stephan Bönnemann <stephan@boennemann.me> (http://boennemann.me)",
@@ -46,7 +46,7 @@
     "lib",
     "index.js"
   ],
-  "homepage": "https://github.com/semantic-release/release-notes-generator#readme",
+  "homepage": "https://github.com/myparcelnl/release-notes-generator#readme",
   "keywords": [
     "changelog",
     "conventional-changelog",
@@ -85,8 +85,11 @@
     "type": "git",
     "url": "https://github.com/myparcelnl/release-notes-generator.git"
   },
+  "overrides": {
+    "core-assert": "^1.0.0"
+  },
   "scripts": {
-    "lint": "xo",
+    "lint": "node -r ./scripts/node-util-shim.cjs node_modules/xo/cli.js",
     "pretest": "npm run lint",
     "semantic-release": "semantic-release",
     "test": "nyc ava -v",

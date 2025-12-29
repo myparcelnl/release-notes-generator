@@ -6,7 +6,7 @@ const escape = require('escape-string-regexp');
 const tempy = require('tempy');
 const proxyquire = require('proxyquire');
 const {spy} = require('sinon');
-const {generateNotes} = require('..');
+const {generateNotes} = require('../index.js');
 
 const cwd = process.cwd();
 const host = 'https://github.com';
