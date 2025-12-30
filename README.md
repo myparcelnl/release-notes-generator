@@ -2,8 +2,7 @@
 
 [**semantic-release**](https://github.com/semantic-release/semantic-release) plugin to generate changelog content with [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
 
-[![Build Status](https://github.com/semantic-release/release-notes-generator/workflows/Test/badge.svg)](https://github.com/semantic-release/release-notes-generator/actions?query=workflow%3ATest+branch%3Amaster) [![npm latest version](https://img.shields.io/npm/v/@semantic-release/release-notes-generator/latest.svg)](https://www.npmjs.com/package/@semantic-release/release-notes-generator)
-[![npm next version](https://img.shields.io/npm/v/@semantic-release/release-notes-generator/next.svg)](https://www.npmjs.com/package/@semantic-release/release-notes-generator)
+[![Build Status](https://github.com/myparcelnl/release-notes-generator/workflows/Test/badge.svg)](https://github.com/myparcelnl/release-notes-generator/actions?query=workflow%3ATest+branch%3Amaster) [![npm latest version](https://img.shields.io/npm/v/@myparcel-dev/semantic-release-release-notes-generator/latest.svg)](https://www.npmjs.com/package/@myparcel-dev/semantic-release-release-notes-generator)
 
 | Step            | Description                                                                                                                                                          |
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -12,7 +11,7 @@
 ## Install
 
 ```bash
-$ npm install @semantic-release/release-notes-generator -D
+$ npm install @myparcel-dev/semantic-release-release-notes-generator -D
 ```
 
 ## Usage
