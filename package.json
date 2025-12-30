@@ -1,5 +1,5 @@
 {
-  "name": "@myparcel/semantic-release-release-notes-generator",
+  "name": "@myparcel-dev/semantic-release-release-notes-generator",
   "description": "semantic-release plugin to generate changelog content with conventional-changelog",
   "version": "0.0.0-development",
   "author": "Pierre Vanduynslager (https://twitter.com/@pvdlg_)",
